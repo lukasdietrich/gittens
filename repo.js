@@ -1,6 +1,24 @@
 var Util    = require("./util.js");
 
-module.exports = function Repo (local) {
+function Commit (repo, hash, author, mail, date, subject) {
+
+    this.repo = repo;
+    this.hash = hash;
+    this.subject = subject;
+
+    this.author = author;
+    this.mail = mail;
+    this.date = new Date(date);
+
+    this.getDiff = function getDiff (callback) {
+        /**
+            TODO
+          */
+    };
+
+};
+
+function Repo (local) {
     this.local = local;
 
     this.isRepository = function isRepository (callback) {
@@ -52,7 +70,7 @@ module.exports = function Repo (local) {
 
     this.listCommits = function listCommits (limit, callback) {
         var commits = [];
-        var params = ["log", "--oneline"];
+        var params = ["log", "--oneline", "--pretty=format:\"%H;%an;%ae;%ad;%s\""];
         var err = false;
 
         if(typeof limit === "number")
@@ -61,11 +79,13 @@ module.exports = function Repo (local) {
             callback = limit;
 
         Util.execute("git", params, this.local, function (out) {
-            out = out.split(" ");
-            commits.push({ hash: out.shift(), text: out.join(" ") });
-        }, function () {
+            out = out.split(";");
+            commits.push(new Commit(this, out.shift(), out.shift(), out.shift(), out.shift(), out.join(";") ));
+        }.bind(this), function () {
             err ? callback(err) : callback(undefined, commits);
         });
 
     };
 };
+
+module.exports = Repo;
