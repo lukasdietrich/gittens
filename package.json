@@ -1,0 +1,13 @@
+{
+    "name": "gittens",
+    "version": "0.0.1",
+    "description": "node.js git library to access git-cli",
+    "keywords": [
+        "git", "gittens", "kittens", "cli", "nodegit"
+    ],
+    "dependencies": {
+        "stream-splitter": "~0.3.0"
+    },
+    "license": "MIT",
+    "main": "main.js"
+}
