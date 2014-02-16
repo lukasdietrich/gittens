@@ -116,3 +116,5 @@ function Git () {
     };
 
 };
+
+module.exports = Git;
