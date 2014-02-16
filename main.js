@@ -3,6 +3,7 @@ var Repo    = require("./repo.js");
 
 module.exports.clone = function clone (path, uri, callback) {
     var repo = false;
+    callback = callback || function () {};
 
     Util.execute("git", ["clone", uri], path, function (out) {
         if(Util.startsWith(out, "Cloning into")) {
@@ -12,38 +13,28 @@ module.exports.clone = function clone (path, uri, callback) {
             }
         }
     }, function () {
-        if(repo === false) {
-            callback("Failed to clone !", undefined);
-        } else {
-            callback(undefined, repo);
-        }
+        repo ? callback(undefined, repo) : callback("Failed to clone repository.");
     });
 };
 
 module.exports.init = function init (path, callback) {
     var repo = false;
+    callback = callback || function () {};
 
     Util.execute("git", ["init"], path, function (out) {
         if(Util.startsWith(out.toString(), "Initialized empty Git repository")) {
             repo = new Repo(path);
         }
     }, function () {
-        if(repo === false) {
-            callback("Failed to Initialize !", undefined);
-        } else {
-            callback(undefined, repo);
-        }
+        repo ? callback(undefined, repo) : callback("Failed to initialize repository.");
     });
 };
 
 module.exports.open = function open (path, callback) {
     var repo = new Repo(path);
+    callback = callback || function () {};
 
     repo.isRepository(function (is) {
-        if(is) {
-            callback(undefined, repo);
-        } else {
-            callback("Not a repository !", undefined);
-        }
+        is ? callback(undefined, repo) : callback("The supplied path was not a repository.");
     });
 };
