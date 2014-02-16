@@ -2,9 +2,21 @@
     "name": "gittens",
     "version": "0.0.1",
     "description": "node.js git library to access git-cli",
+    "homepage": "https://github.com/lukasdietrich/gittens",
     "keywords": [
         "git", "gittens", "kittens", "cli", "nodegit"
     ],
+    "author": "Lukas Dietrich <lukas@lukasdietrich.com> (https://twitter.com/_lukasdietrich)",
+    "contributors": [
+        {
+            "name": "Filip Smets",
+            "email": "alemaaltevinden@gmail.com"
+        }
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/lukasdietrich/gittens.git"
+    },
     "dependencies": {
         "stream-splitter": "~0.3.0"
     },
