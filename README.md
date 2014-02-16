@@ -11,6 +11,32 @@ First install gittens with using ```npm install gittens```
    
 ```js
 var Git = require("gittens");
+
+/* 
+   You can now use methods on Git to interact with Git
+*/
+
+Git.clone("path/where/git/should/be/clone", "uri.of.git.to/clone", function (err, repo) {
+   if (err) {
+      throw err;
+   }
+   //You can now use repo
+});
+
+Git.init("path/to/git/to/init", function (err, repo) {
+    if (err) {
+      throw err;
+   }
+   //You can now use repo
+});
+
+Git.open("path/to/git/to/open", function (err, repo) {
+    if (err) {
+      throw err;
+   }
+   //You can now use repo
+});
+
 ```
 
 License
