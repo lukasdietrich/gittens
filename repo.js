@@ -15,44 +15,45 @@ module.exports = function Repo (local) {
     };
 
     this.add = function add (filepattern, callback) {
-        var success = true;
+        var err = false;
 
         Util.execute("git", ["add", filepattern], this.local, function (out) {
-            if(Util.startsWith(out.toString(), "fatal")) {
-                success = false;
+            if(Util.startsWith(out, "fatal")) {
+                err = out;
             }
         }, function () {
-            callback(success);
+            err ? callback(err) : callback();
         });
     };
 
     this.commit = function commit (message, callback) {
-        var success = true;
+        var err = false;
 
         Util.execute("git", ["commit", "-m", "\"" + message + "\""], this.local, function (out) {
-            if(Util.startsWith(out.toString(), "nothing")) {
-                success = false;
+            if(Util.startsWith(out, "nothing")) {
+                err = out;
             }
         }, function () {
-            callback(success);
+            err ? callback(err) : callback();
         });
     };
 
     this.push = function push (remote, branch, callback) {
-        var success = true;
+        var err = false;
 
         Util.execute("git", ["push", remote, branch], this.local, function (out) {
             /**
                 TODO
               */
         }, function () {
-            callback(success);
+            err ? callback(err) : callback();
         });
     };
 
     this.listCommits = function listCommits (limit, callback) {
         var commits = [];
         var params = ["log", "--oneline"];
+        var err = false;
 
         if(typeof limit === "number")
             params.push("-" + limit);
@@ -63,7 +64,7 @@ module.exports = function Repo (local) {
             out = out.split(" ");
             commits.push({ hash: out.shift(), text: out.join(" ") });
         }, function () {
-            callback(commits);
+            err ? callback(err) : callback(undefined, commits);
         });
 
     };
