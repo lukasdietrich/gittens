@@ -1,21 +1,18 @@
 var spawn   = require("child_process").spawn;
 var fs      = require("fs");
-
-function Util () {};
-
   
-Util.startsWith = function (s1, s2) {
+module.exports.startsWith = function (s1, s2) {
     return s1.lastIndexOf(s2, 0) === 0;
 };
 
-Util.mkdir = function (path, callback) {
+module.exports.mkdir = function (path, callback) {
     fs.stat(path, function (err, stats) {
         if(err) fs.mkdir(path, callback);
         else callback();
     });
 };
 
-Util.execute = function (cmd, params, path, sysout, callback) {
+module.exports.execute = function (cmd, params, path, sysout, callback) {
     this.mkdir(path, function () {
         var proc = spawn(cmd, params, { cwd : path });
         var buff = "";
@@ -39,6 +36,4 @@ Util.execute = function (cmd, params, path, sysout, callback) {
         });
     });
 
-}
-
-module.exports = Util;
+};
