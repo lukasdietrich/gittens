@@ -1,22 +1,32 @@
 {
-    "name": "gittens",
-    "version": "0.0.1",
-    "description": "node.js git library to access git-cli",
-    "homepage": "https://github.com/lukasdietrich/gittens",
-    "keywords": [
-        "git", "gittens", "kittens", "cli", "nodegit"
-    ],
-    "author": "Lukas Dietrich <lukas@lukasdietrich.com> (https://twitter.com/_lukasdietrich)",
-    "contributors": [
-        {
-            "name": "Filip Smets",
-            "email": "alemaaltevinden@gmail.com"
-        }
-    ],
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/lukasdietrich/gittens.git"
-    },
-    "license": "MIT",
-    "main": "main.js"
+  "name": "gittens",
+  "version": "0.0.1",
+  "description": "node.js git library to access git-cli",
+  "homepage": "https://github.com/lukasdietrich/gittens",
+  "keywords": [
+    "git",
+    "gittens",
+    "kittens",
+    "cli",
+    "nodegit"
+  ],
+  "author": "Lukas Dietrich <lukas@lukasdietrich.com> (https://twitter.com/_lukasdietrich)",
+  "contributors": [
+    "Filip Smets <alemaaltevinden@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lukasdietrich/gittens.git"
+  },
+  "license": "MIT",
+  "main": "main.js",
+  "bugs": {
+    "url": "https://github.com/lukasdietrich/gittens/issues"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }
