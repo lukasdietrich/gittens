@@ -7,7 +7,7 @@ It communicates with the installed gitprogram.
 How to use
 ==========
 
-First install gittens with using npm ```install gittens```
+First install gittens with using ```npm install gittens```
    
     var Git = require("gittens");
 
