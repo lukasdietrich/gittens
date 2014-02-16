@@ -3,7 +3,7 @@ var Util    = require("./util.js");
 module.exports = function Repo (local) {
     this.local = local;
 
-    this.isRepository = function (callback) {
+    this.isRepository = function isRepository (callback) {
         var b = false;
 
         Util.execute("git", ["rev-parse", "--is-inside-work-tree"], this.local, function (out) {
@@ -14,7 +14,7 @@ module.exports = function Repo (local) {
         });
     };
 
-    this.add = function (filepattern, callback) {
+    this.add = function add (filepattern, callback) {
         var success = true;
 
         Util.execute("git", ["add", filepattern], this.local, function (out) {
@@ -26,7 +26,7 @@ module.exports = function Repo (local) {
         });
     };
 
-    this.commit = function (message, callback) {
+    this.commit = function commit (message, callback) {
         var success = true;
 
         Util.execute("git", ["commit", "-m", "\"" + message + "\""], this.local, function (out) {
