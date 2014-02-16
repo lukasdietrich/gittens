@@ -74,7 +74,7 @@ repo.listCommits(function (err) {
    ### Everything under here is not done yet ###
    #############################################
 */
-repo.push("git.to.push/to", "branchname", function (err) {
+repo.push("origin", "branchname", function (err) {
    if (err) {
       throw err;
    }
