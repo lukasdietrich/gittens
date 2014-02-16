@@ -1,7 +1,6 @@
 var Util    = require("./util.js");
 
-function Repo (local) {
-
+module.exports = function Repo (local) {
     this.local = local;
 
     this.isRepository = function (callback) {
@@ -65,7 +64,4 @@ function Repo (local) {
         });
 
     };
-
 };
-
-module.exports = Repo;
