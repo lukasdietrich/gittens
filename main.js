@@ -1,11 +1,11 @@
 var spawn   = require("child_process").spawn;
 var fs      = require("fs");
 
-String.prototype.startsWith = function (s) {
-    return this.lastIndexOf(s, 0) === 0;
-};
-
 function Git () {
+
+    var startsWith = function (s1, s2) {
+        return s1.lastIndexOf(s2, 0) === 0;
+    };
 
     this.mkdir = function (path, callback) {
         fs.stat(path, function (err, stats) {
@@ -44,7 +44,7 @@ function Git () {
         var success = false;
 
         this.execute("git", ["init"], path, function (out) {
-            if(out.toString().startsWith("Initialized empty Git repository")) {
+            if(startsWith(out.toString(), "Initialized empty Git repository")) {
                 success = true;
             }
         }, function () {
@@ -56,7 +56,7 @@ function Git () {
         var success = true;
 
         this.execute("git", ["clone", gituri], path, function (out) {
-            if(out.toString().startsWith("fatal")) {
+            if(startsWith(out.toString(), "fatal")) {
                 success = false;
             }
         }, function () {
@@ -68,7 +68,7 @@ function Git () {
         var success = true;
 
         this.execute("git", ["add", filepattern], path, function (out) {
-            if(out.toString().startsWith("fatal")) {
+            if(startsWith(out.toString(), "fatal")) {
                 success = false;
             }
         }, function () {
@@ -80,7 +80,7 @@ function Git () {
         var success = true;
 
         this.execute("git", ["commit", "-m", "\"" + message + "\""], path, function (out) {
-            if(out.toString().startsWith("nothing")) {
+            if(startsWith(out.toString(), "nothing")) {
                 success = false;
             }
         }, function () {
