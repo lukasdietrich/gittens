@@ -1,7 +1,18 @@
 gittens
 =======
 
-node.js git library to access git-cli
+Gittens is a node.js library that can be used for communicating with git.
+It communicates with the installed gitprogram.
+
+How to use
+==========
+
+First install gittens with using npm ```install gittens```
+   
+    var Git = require("gittens");
+
+License
+=======
 
 ```
 The MIT License (MIT)
