@@ -9,7 +9,9 @@ How to use
 
 First install gittens with using ```npm install gittens```
    
-    var Git = require("gittens");
+```js
+var Git = require("gittens");
+```
 
 License
 =======
