@@ -38,19 +38,21 @@ module.exports = function Repo (local) {
         });
     };
 
-    this.push = function (branch, callback) {
+    this.push = function push (remote, branch, callback) {
         var success = true;
 
-        Util.execute("git", ["push", "origin", branch], this.local, function (out) {
-
+        Util.execute("git", ["push", remote, branch], this.local, function (out) {
+            /**
+                TODO
+              */
         }, function () {
             callback(success);
         });
     };
 
-    this.log = function (limit, callback) {
-        var success = false;
-        var params = ["log", "-p"];
+    this.listCommits = function listCommits (limit, callback) {
+        var commits = [];
+        var params = ["log", "--oneline"];
 
         if(typeof limit === "number")
             params.push("-" + limit);
@@ -58,9 +60,10 @@ module.exports = function Repo (local) {
             callback = limit;
 
         Util.execute("git", params, this.local, function (out) {
-            console.log(out);
+            out = out.split(" ");
+            commits.push({ hash: out.shift(), text: out.join(" ") });
         }, function () {
-            callback(success);
+            callback(commits);
         });
 
     };
