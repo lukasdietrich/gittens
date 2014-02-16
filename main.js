@@ -3,7 +3,7 @@ var Repo    = require("./repo.js");
 
 function Git () {};
 
-Git.clone = function (path, uri, callback) {
+Git.prototype.clone = function (path, uri, callback) {
     var repo = false;
 
     Util.execute("git", ["clone", uri], path, function (out) {
@@ -22,7 +22,7 @@ Git.clone = function (path, uri, callback) {
     });
 };
 
-Git.init = function (path, callback) {
+Git.prototype.init = function (path, callback) {
     var repo = false;
 
     Util.execute("git", ["init"], path, function (out) {
@@ -38,7 +38,7 @@ Git.init = function (path, callback) {
     });
 };
 
-Git.open = function (path, callback) {
+Git.prototype.open = function (path, callback) {
     var repo = new Repo(path);
 
     repo.isRepository(function (is) {
