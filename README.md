@@ -10,11 +10,9 @@ How to use
 First install gittens with using ```npm install gittens```
    
 ```js
-var Git = require("gittens");
 
-/* 
-   You can now use methods on Git to interact with Git
-*/
+var Git = require("gittens");
+//You can now use methods on Git to get a repo object
 
 Git.clone("path/where/git/should/be/clone", "uri.of.git.to/clone", function (err, repo) {
    if (err) {
@@ -37,6 +35,50 @@ Git.open("path/to/git/to/open", function (err, repo) {
    //You can now use repo
 });
 
+//Using repo
+repo.add("*", function (err) {
+   if (err) {
+      throw err;
+   }
+   
+   //successfully added file
+});
+
+
+repo.commit("Commit message", function (err) {
+   if (err) {
+      throw err;
+   }
+   
+   //successfully commited
+});
+
+repo.listCommits(maxNumberOfCommits, function (err, commitList) {
+   if (err) {
+      throw err;
+   }
+   //We now have an array of Commit objects
+});
+
+OR
+
+repo.listCommits(function (err) {
+   if (err) {
+     throw err;
+   }
+   //We now have an array of Commit objects
+});
+
+/*
+   #############################################
+   ### Everything under here is not done yet ###
+   #############################################
+*/
+repo.push("git.to.push/to", "branchname", function (err) {
+   if (err) {
+      throw err;
+   }
+});
 ```
 
 License
