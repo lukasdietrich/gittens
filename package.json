@@ -17,9 +17,6 @@
         "type": "git",
         "url": "git://github.com/lukasdietrich/gittens.git"
     },
-    "dependencies": {
-        "stream-splitter": "~0.3.0"
-    },
     "license": "MIT",
     "main": "main.js"
 }
