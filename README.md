@@ -18,7 +18,7 @@ Git.clone("path/where/git/should/be/clone", "uri.of.git.to/clone", function (err
     if (err) {
         throw err;
     }
-    
+
     // You can now use repo
 });
 
@@ -66,7 +66,7 @@ repo.listCommits(maxNumberOfCommits, function (err, commitList) {
 
 OR
 
-repo.listCommits(function (err) {
+repo.listCommits(function (err, commitList) {
     if (err) {
         throw err;
     }
