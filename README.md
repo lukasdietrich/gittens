@@ -74,6 +74,19 @@ repo.listCommits(function (err, commitList) {
     // We now have an array of Commit objects
 });
 
+// Using commits
+console.log(commit.hash + " " + commit.subject);
+commit.getDiff(function (err, diff) {
+    if(err) {
+        throw err;
+    }
+
+    for(var i = 0; i < diff.parts.length; i++) {
+        console.log(diff.parts[i].occurence);
+        console.log(diff.parts[i].lines);
+    }
+});
+
 /*
    #############################################
    ### Everything under here is not done yet ###
