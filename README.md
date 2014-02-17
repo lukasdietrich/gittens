@@ -12,61 +12,66 @@ First install gittens with using ```npm install gittens```
 ```js
 
 var Git = require("gittens");
-//You can now use methods on Git to get a repo object
+// You can now use methods on Git to get a repo object
 
 Git.clone("path/where/git/should/be/clone", "uri.of.git.to/clone", function (err, repo) {
-   if (err) {
-      throw err;
-   }
-   //You can now use repo
+    if (err) {
+        throw err;
+    }
+    
+    // You can now use repo
 });
 
 Git.init("path/to/git/to/init", function (err, repo) {
     if (err) {
-      throw err;
-   }
-   //You can now use repo
+        throw err;
+    }
+
+    // You can now use repo
 });
 
 Git.open("path/to/git/to/open", function (err, repo) {
     if (err) {
-      throw err;
-   }
-   //You can now use repo
+        throw err;
+    }
+
+    // You can now use repo
 });
 
-//Using repo
+// Using repo
 repo.add("*", function (err) {
-   if (err) {
-      throw err;
-   }
+    if (err) {
+        throw err;
+    }
    
-   //successfully added file
+    // successfully added file
 });
 
 
 repo.commit("Commit message", function (err) {
-   if (err) {
-      throw err;
-   }
+    if (err) {
+        throw err;
+    }
    
-   //successfully commited
+    // successfully commited
 });
 
 repo.listCommits(maxNumberOfCommits, function (err, commitList) {
-   if (err) {
-      throw err;
-   }
-   //We now have an array of Commit objects
+    if (err) {
+        throw err;
+    }
+
+    // We now have an array of Commit objects
 });
 
 OR
 
 repo.listCommits(function (err) {
-   if (err) {
-     throw err;
-   }
-   //We now have an array of Commit objects
+    if (err) {
+        throw err;
+    }
+
+    // We now have an array of Commit objects
 });
 
 /*
@@ -75,9 +80,9 @@ repo.listCommits(function (err) {
    #############################################
 */
 repo.push("origin", "branchname", function (err) {
-   if (err) {
-      throw err;
-   }
+    if (err) {
+        throw err;
+    }
 });
 ```
 
