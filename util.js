@@ -27,6 +27,10 @@ module.exports.execute = function (cmd, params, path, sysout, callback) {
             };
         });
 
+        proc.stderr.on("data", function (d) {
+            console.log(d.toString());
+        });
+
         proc.on("close", function () {
             if(buff.length > 0) {
                 sysout(buff);

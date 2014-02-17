@@ -1,4 +1,5 @@
 var Util    = require("./util.js");
+var Commit  = require("./commit.js");
 
 function Repo (local) {
     this.local = local;
@@ -53,7 +54,7 @@ Repo.prototype.push = function push (remote, branch, callback) {
 
 Repo.prototype.listCommits = function listCommits (limit, callback) {
 	var commits = [];
-	var params = ["log", "--oneline", "--pretty=format:\"%H;%an;%ae;%ad;%s\""];
+	var params = ["log", "--oneline", "--pretty=format:%H;%an;%ae;%ad;%s"];
 	var err = false;
 
 	if(typeof limit === "number")
