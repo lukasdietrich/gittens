@@ -24,7 +24,7 @@ Repo.prototype.add = function add (filepattern, callback) {
 			err = out;
 		}
 	}, function () {
-		err ? callback(err) : callback();
+		callback(err);
 	});
 };
 
@@ -36,7 +36,7 @@ Repo.prototype.commit = function commit (message, callback) {
 			err = out;
 		}
 	}, function () {
-		err ? callback(err) : callback();
+		callback(err);
 	});
 };
 
@@ -48,7 +48,7 @@ Repo.prototype.push = function push (remote, branch, callback) {
 			TODO
 		  */
 	}, function () {
-		err ? callback(err) : callback();
+		callback(err);
 	});
 };
 
@@ -66,7 +66,7 @@ Repo.prototype.listCommits = function listCommits (limit, callback) {
 		out = out.split(";");
 		commits.push(new Commit(this, out.shift(), out.shift(), out.shift(), out.shift(), out.join(";") ));
 	}.bind(this), function () {
-		err ? callback(err) : callback(undefined, commits);
+		callback(err, commits);
 	});
 };
 
