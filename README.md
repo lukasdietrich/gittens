@@ -82,7 +82,7 @@ commit.getDiff(function (err, diff) {
     }
 
     for(var i = 0; i < diff.parts.length; i++) {
-        console.log(diff.parts[i].occurence);
+        console.log(diff.parts[i].occurence); //{old: "exmpl", new: "example"}
         console.log(diff.parts[i].lines);
     }
 });
