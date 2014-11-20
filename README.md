@@ -92,6 +92,8 @@ commit.getDiff(function (err, diff) {
    ### Everything under here is not done yet ###
    #############################################
 */
+
+// Will try to push but does NOT give an error back if it fails!
 repo.push("origin", "branchname", function (err) {
     if (err) {
         throw err;
