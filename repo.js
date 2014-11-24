@@ -32,7 +32,7 @@ Repo.prototype.commit = function commit (message, callback) {
 	var err = false;
 	
 	message = message.split("\\").join("\\\\") //Escape all \ by adding a \ in front of every \
-	message = message.split("\"").join("\\\\") //Escape all " by adding a \ in front of every "
+	message = message.split("\"").join("\\\"") //Escape all " by adding a \ in front of every "
 
 	Util.execute("git", ["commit", "-m", "\"" + message + "\""], this.local, function (out) {
 		if(Util.startsWith(out, "nothing")) {
